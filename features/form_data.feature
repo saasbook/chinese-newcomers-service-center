@@ -138,3 +138,13 @@ Scenario: Check that the appropriate fields exist when creating a new case
   And  I should see "15B. Number of cases in which the taxpayer was brought into collection compliance"
   And  I should see "15C. Total amount of dollars refunded in cash to taxpayers"
   And  I should see "15D. Total decrease in corrected tax liabilities, penalties, and interest (but not below zero for any taxpayer)"
+  
+  ### Remove Lines
+  Then I should not see "Name of Clinic"
+  And I should not see "Grant Year"
+  And I should not see "Reporting period"
+  And I should not see "Interim report - january 1 through june 30"
+  And I should not see "Year-end report - january 1 through december 31"
+  And I should not see "Does the clinic participate in the U.S. Tax Court Clinical Program"
+  And I should not see "List the place(s) of trial location served"
+  
