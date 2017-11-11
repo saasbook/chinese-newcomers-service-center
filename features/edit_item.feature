@@ -1,6 +1,4 @@
 # Pivotal Tracker ID: 152651618
-@todo
-
 Feature: Edit an existing item
     As a case worker,
     So that I can update incorrect case information,

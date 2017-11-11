@@ -1,5 +1,4 @@
 #152661608
-@todo
 Feature: Form Headings
   
     As a case worker,
@@ -16,7 +15,6 @@ Background: items have been added to database
       | 333333333  | Billy Bob    | 11-Nov-9999 |             | open   |
       | 000000000  | Ender Wiggin | 11-Nov-9999 |             | open   |
  
-@todo
 Scenario: Opening new case
       Given I am on the new item page
       Then I should see "Form 13424-B"
@@ -31,7 +29,6 @@ Scenario: On index page (no headers visible)
       Then I should not see "Form 13424-B"
       And I should not see "Form 13424-K"
 
-@todo
 Scenario: Editing case
       Given I am on the edit item page for "222222222" 
       Then I should see "Form 13424-B"
