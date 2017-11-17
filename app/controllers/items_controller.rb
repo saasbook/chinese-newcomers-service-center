@@ -44,6 +44,15 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show;
+    @date_opened_string = "N/A"
+    @date_closed_string = "N/A"
+
+    if(@item.date_opened != nil)
+      @date_opened_string = format('%04d', @item[:date_opened].year) + "-" + format('%02d', @item[:date_opened].month) + "-" + format('%02d', @item[:date_opened].day)
+    end
+    if(@item.date_closed != nil)
+      @date_closed_string = format('%04d', @item[:date_closed].year) + "-" + format('%02d', @item[:date_closed].month) + "-" + format('%02d', @item[:date_closed].day)
+    end
   end
 
   # GET /items/new

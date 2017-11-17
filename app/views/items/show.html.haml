@@ -1,8 +1,13 @@
 %p#notice= notice
 
-%h1 Form 13424-B LITC Case Issues Report
+%h1 #{@item.client_name}
+%div SSN: #{@item.client_ssn}
+%div Date Opened: #{@date_opened_string}
+%div Date Closed: #{@date_closed_string}
 
-%h2 Income Issues
+%h2 Form 13424-B LITC Case Issues Report
+
+%h3 Income Issues
 
 %table
   %tbody
@@ -49,7 +54,7 @@
       %th{:align => "left"} 14. Other
       %td= @item.income_issues_14_other
 
-%h2 Deduction Issues
+%h3 Deduction Issues
 
 %table
   %tbody
@@ -93,7 +98,7 @@
       %th{:align => "left"} 27. Business Expenses (Schedule C)
       %td= @item.deduction_issues_27_business_e
 
-%h2 Credit Issues
+%h3 Credit Issues
 
 %table
   %tbody
@@ -119,7 +124,7 @@
       %th{:align => "left"} 34. Other Credits
       %td= @item.credit_issues_34_other_credits
 
-%h2 Status Issues
+%h3 Status Issues
 
 %table
   %tbody
@@ -154,7 +159,7 @@
       %th{:align => "left"} 44. Worker Classification
       %td= @item.status_issues_44_worker_classi
 
-%h2 Tax Issues
+%h3 Tax Issues
 
 %table
   %tbody
@@ -183,7 +188,7 @@
       %th{:align => "left"} 52. Refund Statute of Limitations
       %td= @item.tax_issues_52_refund_statute_o
 
-%h2 Penalty Issues
+%h3 Penalty Issues
 
 %table
   %tbody
@@ -200,7 +205,7 @@
       %th{:align => "left"} 56. Individual Shared Responsibility Payment
       %td= @item.penalty_issues_56_individual_s
 
-%h2 Collection Issues
+%h3 Collection Issues
 
 %table
   %tbody
@@ -223,7 +228,7 @@
       %th{:align => "left"} 62. Levies (Including Federal Payment Levy Program)
       %td= @item.collection_issues_62_levies_in
 
-%h2 
+%h3 
 
 %table
   %tbody
@@ -232,9 +237,9 @@
       %td= @item.total_case_issues_worked_add_l
 
 
-%h1 Form 13424-K LITC Case Information Report
+%h2 Form 13424-K LITC Case Information Report
 
-%h2 Case Inventory
+%h3 Case Inventory
 
 %table
   %tbody
@@ -254,7 +259,7 @@
       %th{:align => "left"} 1E. Ending case inventory (the number of cases that remained open as of the last day of the reporting period (subtract line 1D from line 1C))
       %td= @item.case_inventory_1e_ending_case
 
-%h2 Accounts Management
+%h3 Accounts Management
 
 %table
   %tbody
@@ -271,7 +276,7 @@
       %th{:align => "left"} 2D. Backup Withholding
       %td= @item.accounts_management_2d_backup
 
-%h2 Exams
+%h3 Exams
 
 %table
   %tbody
@@ -291,7 +296,7 @@
       %th{:align => "left"} 2I. Audit Reconsideration
       %td= @item.exams_2i_audit_reconsideration
 
-%h2 Collection
+%h3 Collection
 
 %table
   %tbody
@@ -311,7 +316,7 @@
       %th{:align => "left"} 2N. Bankruptcy
       %td= @item.collection_2n_bankruptcy
 
-%h2 Appeals
+%h3 Appeals
 
 %table
   %tbody
@@ -334,7 +339,7 @@
       %th{:align => "left"} 2T. Other Appeals
       %td= @item.appeals_2t_other_appeals
 
-%h2 Litigation
+%h3 Litigation
 
 %table
   %tbody
@@ -345,7 +350,7 @@
       %th{:align => "left"} 2V. Other Federal Courts
       %td= @item.litigation_2v_other_federal_co
 
-%h2 Miscellaneous
+%h3 Miscellaneous
 
 %table
   %tbody
@@ -365,7 +370,7 @@
       %th{:align => "left"} 2AA. Trust Fund Recovery Penalty
       %td= @item.miscellaneous_2aa_trust_fund_r
 
-%h2 
+%h3 
 
 %table
   %tbody
@@ -373,7 +378,7 @@
       %th{:align => "left"} TOTAL (add items 2A through 2AA) (Must equal value in line 1C)
       %td= @item.total_add_items_2a_through_2aa
 
-%h2 Additional Case Information
+%h3 Additional Case Information
 
 %table
   %tbody
@@ -402,7 +407,7 @@
       %th{:align => "left"} 10. State tax matters
       %td= @item.additional_case_information_10
 
-%h2 U.S. Tax Court Activities
+%h3 U.S. Tax Court Activities
 
 %table
   %tbody
@@ -416,7 +421,7 @@
       %th{:align => "left"} 14. Number of informal consultations in the U.S. Tax Court during the reporting period in which the clinic provided advice to a taxpayer, but not representation
       %td= @item.us_tax_court_activities_14_num
 
-%h2 Closed Case Outcomes
+%h3 Closed Case Outcomes
 
 %table
   %tbody
