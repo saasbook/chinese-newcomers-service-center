@@ -1,15 +1,11 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: %i[show edit update destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   # GET /items
   # GET /items.json
   def index
     
-    @issue_types = Item.issue_types
-    @issue_types.each do |issue|
-      get_issue_method = issue.downcase + "_issues"
-      @get_issue_method = Item.get_issue_method
-    end
+    @issues_and_types = Item.issues_and_types
     
     sort_by = params[:sort_by] || session[:sort_by]
     search_term = params[:search] || session[:search]
@@ -44,7 +40,7 @@ class ItemsController < ApplicationController
       end
     end
   end
-
+    
   # GET /items/1
   # GET /items/1.json
   def show;
