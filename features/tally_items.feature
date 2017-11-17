@@ -14,7 +14,7 @@ Feature: Tally Items By Issue
       | 444444444  | mike        | 1                   | 0                         | 1                                        |
     
     Scenario: Sort by Income Wages Issue
-      Given I am on the diagnostics page
+      Given I am on the index page
       When I check "income_issues_wages"
       And I uncheck "income_issues_ira_pension"
       And I uncheck "deduction_issues_other_interest_expenses"
@@ -26,7 +26,7 @@ Feature: Tally Items By Issue
       And I should see "Total Cases: 2"
       
     Scenario: Sort by Income Wages Issue and Income IRA Pension Issue
-      Given I am on the diagnostics page
+      Given I am on the index page
       When I check "income_issues_wages"
       And I check "income_issues_ira_pension"
       And I uncheck "deduction_issues_other_interest_expenses"
@@ -38,7 +38,7 @@ Feature: Tally Items By Issue
       And I should see "Total Cases: 3"
       
     Scenario: Uncheck all relevant issues
-      Given I am on the diagnostics page
+      Given I am on the index page
       When I uncheck "income_issues_ira_pension"
       And I uncheck "income_issues_wages"
       And I uncheck "deduction_issues_other_interest_expenses"

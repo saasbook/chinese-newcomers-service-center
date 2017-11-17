@@ -4,6 +4,13 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
+    
+    @issue_types = Item.issue_types
+    @issue_types.each do |issue|
+      get_issue_method = issue.downcase + "_issues"
+      @get_issue_method = Item.get_issue_method
+    end
+    
     sort_by = params[:sort_by] || session[:sort_by]
     search_term = params[:search] || session[:search]
     if params[:sort_by] != session[:sort_by] || params[:search] != session[:search]
