@@ -6,13 +6,15 @@ class ItemsController < ApplicationController
   def index
     
     @issues_and_types = Item.issues_and_types
-    
+    @selected_issues = params[:issues] || session[:issues] || {}
     sort_by = params[:sort_by] || session[:sort_by]
     search_term = params[:search] || session[:search]
-    if params[:sort_by] != session[:sort_by] || params[:search] != session[:search]
+    
+    if params[:sort_by] != session[:sort_by] || params[:search] != session[:search] || params[:issues] != session[:issues]
       session[:sort_by] = sort_by
       session[:search] = search_term
-      redirect_to(items_path(sort_by: sort_by, search: search_term)) && return
+      session[:issues] = @selected_issues
+      redirect_to(items_path(sort_by: sort_by, search: search_term, issues: @selected_issues)) && return
     end
 
     # case sort_by

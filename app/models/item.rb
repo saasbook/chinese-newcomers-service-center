@@ -54,6 +54,12 @@ class Item < ActiveRecord::Base
         "Levies (Including Federal Payment Levy Program"]
     end
     
+    def self.issues
+        return (self.income_issues + self.deduction_issues + self.credit_issues + 
+        self.status_issues + self.tax_refund_return_statue_limitations_issues + self.penalty_addtion_tax_issues +
+        self.collection_issues)
+    end
+    
     def self.issues_and_types
         return [["Income", self.income_issues], ["Deduction", self.deduction_issues], ["Credit", self.credit_issues],
         ["Status", self.status_issues], ["Tax", self.tax_refund_return_statue_limitations_issues], ["Penalty", self.penalty_addtion_tax_issues], 

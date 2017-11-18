@@ -6,10 +6,10 @@
   = submit_tag "Search" 
   Filter Cases by Issue Type:
   - @issues_and_types.each do |object|
-    %h3= object[0]
+    %h4= object[0]
     - object[1].each do |issue|
-      = "#{issue}"
-      = check_box_tag "#{issue}", 1
+      = issue
+      = check_box_tag "issues[#{issue}]", 1, @selected_issues.has_value?(issue)
   = submit_tag 'Refresh', :id => 'issues_refresh'
 
 #{@items_alert_message}
