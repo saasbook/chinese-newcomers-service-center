@@ -46,6 +46,15 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show;
+    @date_opened_string = "N/A"
+    @date_closed_string = "N/A"
+
+    if(@item.date_opened != nil)
+      @date_opened_string = format('%04d', @item[:date_opened].year) + "-" + format('%02d', @item[:date_opened].month) + "-" + format('%02d', @item[:date_opened].day)
+    end
+    if(@item.date_closed != nil)
+      @date_closed_string = format('%04d', @item[:date_closed].year) + "-" + format('%02d', @item[:date_closed].month) + "-" + format('%02d', @item[:date_closed].day)
+    end
   end
 
   # GET /items/new
@@ -61,6 +70,13 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
+    if (item_params[:client_name] == "" && item_params[:client_ssn] == "")
+      respond_to do |format|
+        format.html {redirect_to items_url, notice: 'Error: At least client name or SSN must be entered to create a case.  Hit the BACK button to resume editing.'}
+        format.json {head :no_content}
+      end
+      return
+    end
     @item = Item.create!(item_params)
     tempCaseIdBase = format('%04d', @item[:date_opened].year) + format('%02d', @item[:date_opened].month) + format('%02d', @item[:date_opened].day)
     idNum = if Setting.get_all.key?(tempCaseIdBase)
@@ -72,7 +88,7 @@ class ItemsController < ApplicationController
 
     tempCaseId = tempCaseIdBase + format('%03d', idNum)
     @item.update_attributes(case_id: tempCaseId)
-    flash[:notice] = 'Item was successfully created.' + @item[:date_opened].year.to_s
+    # flash[:notice] = 'Item was successfully created.' + @item[:date_opened].year.to_s
     redirect_to items_path
   end
 
