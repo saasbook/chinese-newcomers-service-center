@@ -10,12 +10,15 @@ class ItemsController < ApplicationController
     sort_by = params[:sort_by] || session[:sort_by]
     search_term = params[:search] || session[:search]
     
-    if params[:sort_by] != session[:sort_by] || params[:search] != session[:search] || params[:issues] != session[:issues]
-      session[:sort_by] = sort_by
-      session[:search] = search_term
-      session[:issues] = @selected_issues
-      redirect_to(items_path(sort_by: sort_by, search: search_term, issues: @selected_issues)) && return
-    end
+    # if params[:sort_by] != session[:sort_by] || params[:search] != session[:search] || params[:issues] != session[:issues]
+    #   session[:sort_by] = sort_by
+    #   session[:search] = search_term
+    #   session[:issues] = @selected_issues
+    #   params[:sort_by] = sort_by
+    #   params[:search] = search_term
+    #   params[:issues] = @selected_issues
+    #   redirect_to(items_path(sort_by: sort_by, search: search_term, issues: @selected_issues)) && return
+    # end
 
     # case sort_by
     #   when 'client_ssn'

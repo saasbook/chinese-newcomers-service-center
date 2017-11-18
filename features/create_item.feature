@@ -1,5 +1,4 @@
 # Pivotal Tracker ID: #151967959
-@todo
 Feature: Create Item
 
   As a case worker
