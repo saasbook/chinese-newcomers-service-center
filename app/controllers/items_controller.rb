@@ -14,9 +14,6 @@ class ItemsController < ApplicationController
     #   session[:sort_by] = sort_by
     #   session[:search] = search_term
     #   session[:issues] = @selected_issues
-    #   params[:sort_by] = sort_by
-    #   params[:search] = search_term
-    #   params[:issues] = @selected_issues
     #   redirect_to(items_path(sort_by: sort_by, search: search_term, issues: @selected_issues)) && return
     # end
 
