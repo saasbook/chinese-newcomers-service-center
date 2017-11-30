@@ -1,6 +1,6 @@
 %h1 Create New Case
 
-= form_tag items_path do
+= form_tag items_path, :multipart => true do
 
   = label :item, :client_name, 'Client Name'
   = text_field :item, 'client_name'
@@ -571,6 +571,20 @@
         = text_field :item, :closed_case_outcomes_15d_total
         = label :item, :closed_case_outcomes_15d_total, '15D. Total decrease in corrected tax liabilities, penalties, and interest (but not below zero for any taxpayer)' 
       %br
+  
+  %h2 Documents
+      
+  = file_field :item, :document1
+  %br
+  = file_field :item, :document2
+  %br
+  = file_field :item, :document3
+  %br
+  = file_field :item, :document4
+  %br
+  = file_field :item, :document5
+  %br
+  %br
 
   = submit_tag 'Create Item'
   = link_to 'Back', items_path

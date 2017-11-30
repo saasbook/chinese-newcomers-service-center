@@ -437,6 +437,20 @@
     %tr
       %th{:align => "left"} 15D. Total decrease in corrected tax liabilities, penalties, and interest (but not below zero for any taxpayer)
       %td= @item.closed_case_outcomes_15d_total
+      
+%h3 Documents
+      
+= link_to(@item.document1.original_filename, @item.document1.url, target: '_blank') if @item.document1.exists?
+%br
+= link_to(@item.document2.original_filename, @item.document2.url, target: '_blank') if @item.document2.exists?
+%br
+= link_to(@item.document3.original_filename, @item.document3.url, target: '_blank') if @item.document3.exists?
+%br
+= link_to(@item.document4.original_filename, @item.document4.url, target: '_blank') if @item.document4.exists?
+%br
+= link_to(@item.document5.original_filename, @item.document5.url, target: '_blank') if @item.document5.exists?
+%br
+%br
 
 
 = link_to 'Edit', edit_item_path(@item)
