@@ -146,6 +146,7 @@ class ItemsController < ApplicationController
       :client_ssn,
       :date_opened,
       :date_closed,
+      Item.all_fields,
       :income_issues_1_wages, 
       :income_issues_2_interest_divid, 
       :income_issues_3_business_incom, 

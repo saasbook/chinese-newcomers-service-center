@@ -18,6 +18,19 @@
   -# Form B
   %h1 Form 13424-B Case Issues Report
   
+  /- Item.b_issues_headings_and_types.each do |form_b|
+  /  - field_heading = form_b[0]
+  /  - field_names = form_b[1]
+  /  - fields = form_b[2]
+  /  %h2 field_heading
+  /  
+  /  %table
+  /    %tbody
+  /      %tr
+  /        - fields.each.with_index do |field, idx|
+  /          = check_box_tag "income_issues_1_wages", 1, false, :id => "income_issues_1_wages" 
+  /          = label :item, :income_issues_1_wages, field_names[idx]
+  
   %h2 Income Issues
 
   %table

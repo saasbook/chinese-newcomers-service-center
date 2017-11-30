@@ -1,3 +1,4 @@
+
 Feature: Close Item
   
     As a case worker
@@ -20,5 +21,4 @@ Scenario: Close an item
       And I press "Update Case"
       Then I should be on the items index page
       And I should see "2012-01-01"
-      
       
