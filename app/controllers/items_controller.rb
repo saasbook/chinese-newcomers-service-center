@@ -77,7 +77,19 @@ class ItemsController < ApplicationController
       end
       return
     end
-    @item = Item.create!(item_params)
+    item_params[:document1]
+    @item = Item.create(item_params)
+    if !@item.valid?
+      errStr = ""
+      @item.errors.full_messages.each do |errMsg|
+        errStr += errMsg + ".  "
+      end
+      respond_to do |format|
+        format.html {redirect_to items_url, notice: 'Error: ' + errStr}
+        format.json {head :no_content}
+      end
+      return
+    end
     tempCaseIdBase = format('%04d', @item[:date_opened].year) + format('%02d', @item[:date_opened].month) + format('%02d', @item[:date_opened].day)
     idNum = if Setting.get_all.key?(tempCaseIdBase)
               Setting[tempCaseIdBase] + 1
