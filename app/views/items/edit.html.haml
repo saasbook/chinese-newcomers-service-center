@@ -1,6 +1,6 @@
 %h1 Edit Case
 
-= form_tag item_path(@item), :method => :put do
+= form_tag item_path(@item), :method => :put, :multipart => true do
 
   = label :item, :client_name, 'Client Name'
   = text_field :item, 'client_name'
@@ -556,6 +556,29 @@
         = text_field :item, :closed_case_outcomes_15d_total
         = label :item, :closed_case_outcomes_15d_total, '15D. Total decrease in corrected tax liabilities, penalties, and interest (but not below zero for any taxpayer)' 
       %br
+      
+  %h2 Documents
+  = file_field(:item, :document1) if not @item.document1.exists?
+  = check_box_tag(:remove_document1) if @item.document1.exists?
+  = label(:item, :remove_document1, 'DELETE ' + @item.document1.original_filename + '?') if @item.document1.exists?
+  %br
+  = file_field(:item, :document2) if not @item.document2.exists?
+  = check_box_tag(:remove_document2) if @item.document2.exists?
+  = label(:item, :remove_document2, 'DELETE ' + @item.document2.original_filename + '?') if @item.document2.exists?
+  %br
+  = file_field(:item, :document3) if not @item.document3.exists?
+  = check_box_tag(:remove_document3) if @item.document3.exists?
+  = label(:item, :remove_document3, 'DELETE ' + @item.document3.original_filename + '?') if @item.document3.exists?
+  %br
+  = file_field(:item, :document4) if not @item.document4.exists?
+  = check_box_tag(:remove_document4) if @item.document4.exists?
+  = label(:item, :remove_document4, 'DELETE ' + @item.document4.original_filename + '?') if @item.document4.exists?
+  %br
+  = file_field(:item, :document5) if not @item.document5.exists?
+  = check_box_tag(:remove_document5) if @item.document5.exists?
+  = label(:item, :remove_document5, 'DELETE ' + @item.document5.original_filename + '?') if @item.document5.exists?
+  %br
+  %br
   
   = submit_tag 'Update Case'
   

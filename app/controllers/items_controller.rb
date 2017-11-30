@@ -97,6 +97,11 @@ class ItemsController < ApplicationController
   def update
     respond_to do |format|
       if @item.update(item_params)
+        @item.document1.destroy if params[:remove_document1] == "1"
+        @item.document2.destroy if params[:remove_document2] == "1"
+        @item.document3.destroy if params[:remove_document3] == "1"
+        @item.document4.destroy if params[:remove_document4] == "1"
+        @item.document5.destroy if params[:remove_document5] == "1"
         format.html {redirect_to items_path, notice: 'Item was successfully updated.'}
         format.json {render :show, status: :ok, location: @item}
       else
@@ -239,6 +244,12 @@ class ItemsController < ApplicationController
       :closed_case_outcomes_15a_numbe, 
       :closed_case_outcomes_15b_numbe, 
       :closed_case_outcomes_15c_total, 
-      :closed_case_outcomes_15d_total)
+      :closed_case_outcomes_15d_total,
+      :document1,
+      :document2,
+      :document3,
+      :document4,
+      :document5
+      )
   end
 end

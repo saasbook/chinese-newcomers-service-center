@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171110205326) do
+ActiveRecord::Schema.define(version: 20171128234718) do
 
   create_table "items", force: :cascade do |t|
     t.string   "client_ssn"
@@ -248,6 +248,26 @@ ActiveRecord::Schema.define(version: 20171110205326) do
     t.string   "closed_case_outcomes_15b_numbe"
     t.string   "closed_case_outcomes_15c_total"
     t.string   "closed_case_outcomes_15d_total"
+    t.string   "document1_file_name"
+    t.string   "document1_content_type"
+    t.integer  "document1_file_size"
+    t.datetime "document1_updated_at"
+    t.string   "document2_file_name"
+    t.string   "document2_content_type"
+    t.integer  "document2_file_size"
+    t.datetime "document2_updated_at"
+    t.string   "document3_file_name"
+    t.string   "document3_content_type"
+    t.integer  "document3_file_size"
+    t.datetime "document3_updated_at"
+    t.string   "document4_file_name"
+    t.string   "document4_content_type"
+    t.integer  "document4_file_size"
+    t.datetime "document4_updated_at"
+    t.string   "document5_file_name"
+    t.string   "document5_content_type"
+    t.integer  "document5_file_size"
+    t.datetime "document5_updated_at"
   end
 
   create_table "settings", force: :cascade do |t|
