@@ -1,14 +1,20 @@
 .container
   .jumbotron
-    %h1 Listing items
+    %h1 Chinese Newcomers Service Center
   
   %p#notice= notice
   
-  = form_tag items_path, :method => "get", id: "search-cases-form" do
-    = text_field_tag :search, params[:search], placeholder: "Search Cases"
-    = submit_tag "Search" 
-    
-  = link_to 'Metrics', item_metrics_path()
+  .index-btns
+    = form_tag items_path, :method => "get", id: "search-cases-form" do
+      = text_field_tag :search, params[:search], placeholder: "Search Cases"
+      = submit_tag "Search" 
+      
+  .btn.btn-info.new-button.index-btns
+    = link_to 'New Item', new_item_path
+  
+  .btn.btn-info.new-button.index-btns
+    = link_to 'See Case Metrics', item_metrics_path()
+
   
   #{@items_alert_message}
   
@@ -34,5 +40,4 @@
   
   %br
   
-  .btn.btn-info.new-button
-    = link_to 'New Item', new_item_path
+
