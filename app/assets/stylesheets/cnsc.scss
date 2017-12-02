@@ -1,21 +1,45 @@
+.container .jumbotron {
+    padding-left: 0px;
+}
 .jumbotron {
     background-color: white;
     width: 100%;
+    margin: 0;
 }
-.header h1 {
+.jumbotron h1 {
+    display: inline;
+    font-size: 50px;
     color: black;
 }
-.search .input {
-    width: 500px;
+.logo {
+    display: inline;
+    width: 100px;
+}
+.search-field {
+    height: 34px;
+    width: 300px;
+}
+.new-button {
+    background-color: #CB2028;
+    border-color: #CB2028;
+    border-radius: 0px;
+}
+.new-button:hover {
+    border-color: #CB2028;
+    background-color: white;
 }
 .new-button a {
     color: white;
+    margin-right: 5px;
+    margin-left: 5px;
 }
 .new-button a:hover {
+    color: #CB2028;
     text-decoration: none;
 }
-
 .index-btns {
     display: inline-block;
-    margin: 10px;
+}
+.index-nav {
+    padding-bottom: 10px;
 }
