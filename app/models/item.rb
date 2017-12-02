@@ -39,9 +39,9 @@ class Item < ActiveRecord::Base
         return self.b_fields + self.k_fields
     end
     
-    self.all_fields.each do |field|
-        attr_accessor field
-    end
+    # self.all_fields.each do |field|
+    #     attr_accessor field
+    # end
     
     def self.income_issues
         return ["1. Wages", 

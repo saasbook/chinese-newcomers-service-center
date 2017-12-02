@@ -77,8 +77,9 @@ class ItemsController < ApplicationController
       end
       return
     end
-    item_params[:document1]
+
     @item = Item.create(item_params)
+
     if !@item.valid?
       errStr = ""
       @item.errors.full_messages.each do |errMsg|
@@ -146,6 +147,7 @@ class ItemsController < ApplicationController
       :client_ssn,
       :date_opened,
       :date_closed,
+      :B_1,
       "document1_file_name",
       "document1_content_type",
       "document1_file_size",
@@ -166,7 +168,6 @@ class ItemsController < ApplicationController
       "document5_content_type",
       "document5_file_size",
       "document5_updated_at",
-      "B_1",
       "B_2",
       "B_3",
       "B_4",
