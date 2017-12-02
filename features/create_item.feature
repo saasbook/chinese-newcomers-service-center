@@ -160,10 +160,10 @@ Feature: Create Item
     Given I am on the new item page
     When I fill in "Client SSN" with "010101010"
     And I fill in "Client Name" with "Checky McCheckbox"
-    And I check "income_issues_1_wages"
-    And I check "deduction_issues_23_charitable"
-    And I check "credit_issues_33_premium_tax_c"
-    And I check "collection_issues_57_payments"
+    And I check "B_1"
+    And I check "B_23"
+    And I check "B_33"
+    And I check "B_57"
     And I press "Create Item"
     When I go to the show item page for "010101010"
     Then I should see "Checky McCheckbox"
@@ -179,6 +179,6 @@ Feature: Create Item
 
   Scenario: Try to create a new item with no client name or SSN (sad path)
     Given I am on the new item page
-    When I check "income_issues_1_wages"
+    When I check "B_1"
     And I press "Create Item"
     Then I should see "Error: At least client name or SSN must be entered to create a case"

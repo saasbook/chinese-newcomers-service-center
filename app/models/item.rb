@@ -149,7 +149,9 @@ class Item < ActiveRecord::Base
                 ["Penalty Issues", self.penalty_addition_tax_issues, 
                     [:B_53, :B_54, :B_55, :B_56], "check_box_tag"],
                 ["Collection Issues", self.collection_issues,
-                    [:B_57, :B_58, :B_59, :B_60, :B_61, :B_62], "check_box_tag"]]
+                    [:B_57, :B_58, :B_59, :B_60, :B_61, :B_62], "check_box_tag"],
+                ["Total", ["Total Case Issues Worked (add lines 1 through 62)"],
+                    [:B_total], "text_field"]]
     end
 
     def self.k_headings_names_and_fields
