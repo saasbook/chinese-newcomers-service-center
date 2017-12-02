@@ -23,19 +23,18 @@
     background-color: #CB2028;
     border-color: #CB2028;
     border-radius: 0px;
-}
-.new-button:hover {
-    border-color: #CB2028;
-    background-color: white;
-}
-.new-button a {
-    color: white;
     margin-right: 5px;
     margin-left: 5px;
 }
-.new-button a:hover {
+.new-button:hover {
     color: #CB2028;
-    text-decoration: none;
+    border-color: #CB2028;
+    background-color: white;
+}
+.new-button:active {
+    color: #CB2028;
+    border-color: #CB2028;
+    background-color: white;
 }
 .index-btns {
     display: inline-block;
