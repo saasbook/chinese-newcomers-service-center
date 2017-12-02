@@ -77,7 +77,6 @@ class ItemsController < ApplicationController
       end
       return
     end
-
     @item = Item.create(item_params)
 
     if !@item.valid?
@@ -148,6 +147,11 @@ class ItemsController < ApplicationController
       :date_opened,
       :date_closed,
       :B_1,
+      :document1,
+      :document2,
+      :document3,
+      :document4,
+      :document5,
       "document1_file_name",
       "document1_content_type",
       "document1_file_size",
