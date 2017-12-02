@@ -1,81 +1,81 @@
-%h1 Create New Case
+.container
+  .page-header
+    %h1 Create New Case
 
-= form_tag items_path, :multipart => true do
+  = form_tag items_path, :multipart => true do
 
-  = label :item, :client_name, 'Client Name'
-  = text_field :item, 'client_name'
-  %br
-  = label :item, :client_ssn, 'Client SSN'
-  = text_field :item, 'client_ssn'
-  %br
-  = label :item, :date_opened, 'Date Opened'
-  = date_select :item, :date_opened
-  %br
-  = label :item, :date_closed, 'Date Closed'
-  = date_select :item, :date_closed, {:include_blank => true}
-
-  %br
-  -# Form B
-  %h1 Form 13424-B Case Issues Report
+    = label :item, :client_name, 'Client Name', :class => "input_label"
+    = text_field :item, 'client_name'
+    %br
+    = label :item, :client_ssn, 'Client SSN', :class => "input_label"
+    = text_field :item, 'client_ssn'
+    %br
+    = label :item, :date_opened, 'Date Opened', :class => "input_label"
+    = date_select :item, :date_opened
+    %br
+    = label :item, :date_closed, 'Date Closed', :class => "input_label"
+    = date_select :item, :date_closed, {:include_blank => true}
   
-  - Item.b_headings_names_and_fields.each do |form_b|
-    - field_heading = form_b[0]
-    - field_names = form_b[1]
-    - fields = form_b[2]
-    - field_type = form_b[3]
-    %h2 #{field_heading}
+    %br
+    -# Form B
     
-    %table
-      %tbody
-        %tr
-          - fields.each.with_index do |field, idx|
-            - if field_type == "check_box_tag"
-              = check_box_tag "item[#{field}]", 1, false, :id => field
-              = label :item, field, field_names[idx]
-            - if field_type == "text_field"
-              = label :item, field, field_names[idx]
-              = text_field :item, field
-            %br
-            
-  %h1 Form 13424-K Case Information Report
-  
-
-  - Item.k_headings_names_and_fields.each do |form_k|
-    - field_heading = form_k[0]
-    - field_names = form_k[1]
-    - fields = form_k[2]
-    - field_type = form_k[3]
-    %h2 #{field_heading}
+    %h2.page-header Form 13424-B Case Issues Report
     
-    %table
-      %tbody
-        %tr
-          - fields.each.with_index do |field, idx|
-            - if field_type == "check_box_tag"
-              = check_box_tag "item[#{field}]", 1, false, :id => field
-              = label :item, field, field_names[idx]
-            - if field_type == "text_field"
-              = text_field :item, field
-              = label :item, field, field_names[idx]
-            %br
-  
-  
-  
-  
-  
-  %h2 Documents
+    - Item.b_headings_names_and_fields.each do |form_b|
+      - field_heading = form_b[0]
+      - field_names = form_b[1]
+      - fields = form_b[2]
+      - field_type = form_b[3]
+      %h3 #{field_heading}
       
-  = file_field :item, :document1
-  %br
-  = file_field :item, :document2
-  %br
-  = file_field :item, :document3
-  %br
-  = file_field :item, :document4
-  %br
-  = file_field :item, :document5
-  %br
-  %br
-
-  = submit_tag 'Create Item'
-  = link_to 'Back', items_path
+      %table
+        %tbody
+          %tr
+            - fields.each.with_index do |field, idx|
+              - if field_type == "check_box_tag"
+                = check_box_tag "item[#{field}]", 1, false, :id => field
+                = label :item, field, field_names[idx], :class => "check_box_label"
+              - if field_type == "text_field"
+                = label :item, field, field_names[idx], :class => "input_label"
+                = text_field :item, field
+              %br
+              
+    %h2.page-header Form 13424-K Case Information Report
+    
+  
+    - Item.k_headings_names_and_fields.each do |form_k|
+      - field_heading = form_k[0]
+      - field_names = form_k[1]
+      - fields = form_k[2]
+      - field_type = form_k[3]
+      %h3 #{field_heading}
+      
+      %table
+        %tbody
+          %tr
+            - fields.each.with_index do |field, idx|
+              - if field_type == "check_box_tag"
+                = check_box_tag "item[#{field}]", 1, false, :id => field
+                = label :item, field, field_names[idx], :class => "check_box_label"
+              - if field_type == "text_field"
+                = text_field :item, field
+                = label :item, field, field_names[idx], :class => "input_label"
+              %br
+    
+    %h2.page-header Documents
+        
+    = file_field :item, :document1
+    %br
+    = file_field :item, :document2
+    %br
+    = file_field :item, :document3
+    %br
+    = file_field :item, :document4
+    %br
+    = file_field :item, :document5
+    %br
+    %br
+    
+    
+    = submit_tag 'Create Case', :class => "btn btn-info new-button index-btns"
+    = link_to 'Back To Homepage', items_path, :class => "btn btn-info new-button index-btns"
