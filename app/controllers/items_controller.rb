@@ -72,8 +72,8 @@ class ItemsController < ApplicationController
   def create
     if (item_params[:client_name] == "" && item_params[:client_ssn] == "")
       respond_to do |format|
-        formahtml {redirect_to items_url, notice: 'Error: At least client name or SSN must be entered to create a case.  Hit the BACK button to resume editing.'}
-        formajson {head :no_content}
+        format.html {redirect_to items_url, notice: 'Error: At least client name or SSN must be entered to create a case.  Hit the BACK button to resume editing.'}
+        format.json {head :no_content}
       end
       return
     end
@@ -85,8 +85,8 @@ class ItemsController < ApplicationController
         errStr += errMsg + ".  "
       end
       respond_to do |format|
-        formahtml {redirect_to items_url, notice: 'Error: ' + errStr}
-        formajson {head :no_content}
+        format.html {redirect_to items_url, notice: 'Error: ' + errStr}
+        format.json {head :no_content}
       end
       return
     end
@@ -114,11 +114,11 @@ class ItemsController < ApplicationController
         @item.document3.destroy if params[:remove_document3] == "1"
         @item.document4.destroy if params[:remove_document4] == "1"
         @item.document5.destroy if params[:remove_document5] == "1"
-        formahtml {redirect_to items_path, notice: 'Item was successfully updated.'}
-        formajson {render :show, status: :ok, location: @item}
+        format.html {redirect_to items_path, notice: 'Item was successfully updated.'}
+        format.json {render :show, status: :ok, location: @item}
       else
-        formahtml {render :edit}
-        formajson {render json: @item.errors, status: :unprocessable_entity}
+        format.html {render :edit}
+        format.json {render json: @item.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -128,8 +128,8 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy
     respond_to do |format|
-      formahtml {redirect_to items_url, notice: 'Item was successfully destroyed.'}
-      formajson {head :no_content}
+      format.html {redirect_to items_url, notice: 'Item was successfully destroyed.'}
+      format.json {head :no_content}
     end
   end
 
