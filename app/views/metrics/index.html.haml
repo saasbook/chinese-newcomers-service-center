@@ -1,1 +1,64 @@
-I AM HERE
+%h1 Case Metrics
+
+  -# Form B
+  %h1 Form 13424-B Case Issues Report
+  
+  - Item.b_headings_names_and_fields.each do |form_b|
+    - field_heading = form_b[0]
+    - field_names = form_b[1]
+    - fields = form_b[2]
+    - field_type = form_b[3]
+    %h2 #{field_heading}
+    
+    %table
+      %tbody
+        %tr
+          - fields.each.with_index do |field, idx|
+            - if field_type == "check_box_tag"
+              = check_box_tag "item[#{field}]", 1, @item[field] == "1", {disabled: true, :id => field}
+              = label :item, field, field_names[idx]
+            - if field_type == "text_field"
+              = text_field :item, field
+              = label :item, field, field_names[idx]
+            %br
+            
+  %h1 Form 13424-K Case Information Report
+  
+
+  - Item.k_headings_names_and_fields.each do |form_k|
+    - field_heading = form_k[0]
+    - field_names = form_k[1]
+    - fields = form_k[2]
+    - field_type = form_k[3]
+    %h2 #{field_heading}
+    
+    %table
+      %tbody
+        %tr
+          - fields.each.with_index do |field, idx|
+            - if field_type == "check_box_tag"
+              = check_box_tag "item[#{field}]", 1, @item[field] == "1", {disabled: true, :id => field}
+              = label :item, field, field_names[idx]
+            - if field_type == "text_field"
+              = text_field :item, field
+              = label :item, field, field_names[idx]
+            %br
+      
+%h3 Documents
+      
+= link_to(@item.document1.original_filename, @item.document1.url, target: '_blank') if @item.document1.exists?
+%br
+= link_to(@item.document2.original_filename, @item.document2.url, target: '_blank') if @item.document2.exists?
+%br
+= link_to(@item.document3.original_filename, @item.document3.url, target: '_blank') if @item.document3.exists?
+%br
+= link_to(@item.document4.original_filename, @item.document4.url, target: '_blank') if @item.document4.exists?
+%br
+= link_to(@item.document5.original_filename, @item.document5.url, target: '_blank') if @item.document5.exists?
+%br
+%br
+
+
+= link_to 'Edit', edit_item_path(@item)
+\|
+= link_to 'Back', items_path
