@@ -134,10 +134,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  def metrics
-
-  end
-
   private
 
   # Use callbacks to share common setup or constraints between actions.
