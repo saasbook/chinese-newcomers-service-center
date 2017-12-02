@@ -5,6 +5,7 @@
   
   %p#notice= notice
   
+
   .index-nav
     .index-btns
       = form_tag items_path, :method => "get", id: "search-cases-form" do
@@ -13,7 +14,13 @@
         
     = link_to 'New Item', new_item_path, :class => "btn btn-info new-button index-btn"
    
+<<<<<<< HEAD
     = link_to 'See Case Metrics', item_metrics_path(), :class => "btn btn-info new-button index-btn"
+=======
+    .btn.btn-info.new-button.index-btns
+      = link_to 'See Case Metrics', item_metrics_path
+
+>>>>>>> b537549ab4506dc374a7f3699eda27ee2278e87d
 
   
   #{@items_alert_message}

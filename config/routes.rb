@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'items#index'
-  get 'items/metrics' => 'items#metrics', as: :item_metrics
+  get 'metrics' => 'items#metrics', as: :item_metrics
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
