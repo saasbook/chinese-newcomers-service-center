@@ -4,10 +4,12 @@
     %h1 Chinese Newcomers Service Center
   
   %h1 Create New Case
-  = submit_tag 'Save And Create Case', :class => "btn btn-info new-button index-btns"
-  = link_to 'Back To Homepage', items_path, :class => "btn btn-info new-button index-btns"
 
   = form_tag items_path, :multipart => true do
+    = link_to 'Back To Homepage', items_path, :class => "btn btn-info new-button index-btns"
+    
+    = submit_tag 'Save And Create Case', :class => "btn btn-info new-button index-btns"
+    %br
 
     = label :item, :client_name, 'Client Name', :class => "input_label"
     = text_field :item, 'client_name'
@@ -81,6 +83,5 @@
     %br
     %br
     
-    
-    = submit_tag 'Save And Create Case', :class => "btn btn-info new-button index-btns"
     = link_to 'Back To Homepage', items_path, :class => "btn btn-info new-button index-btns"
+    = submit_tag 'Save And Create Case', :class => "btn btn-info new-button index-btns"
