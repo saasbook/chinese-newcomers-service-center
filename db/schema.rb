@@ -140,7 +140,7 @@ ActiveRecord::Schema.define(version: 20171130031450) do
     t.string   "K_2Y"
     t.string   "K_2Z"
     t.string   "K_2AA"
-    t.string   "K_T"
+    t.string   "K_total"
     t.string   "K_3"
     t.string   "K_4"
     t.string   "K_5"

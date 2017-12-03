@@ -95,7 +95,7 @@ class AddRefactoredFieldsToItem < ActiveRecord::Migration
     add_column :items, :K_2Y, :string
     add_column :items, :K_2Z, :string
     add_column :items, :K_2AA, :string
-    add_column :items, :K_T, :string
+    add_column :items, :K_total, :string
     add_column :items, :K_3, :string
     add_column :items, :K_4, :string
     add_column :items, :K_5, :string
