@@ -35,7 +35,7 @@
             %tr
               - fields.each.with_index do |field, idx|
                 - if field_type == "check_box_tag"
-                  = check_box_tag "item[#{field}]", 1, @item[field] == "1", {disabled: true, :id => field}
+                  = check_box_tag "item[#{field}]", 1, @item[field] == "1", {disabled: true, :id => field, :class => 'B_sum'}
                   = label :item, field, field_names[idx], :class => "check_box_label"
                 - if field_type == "text_field"
                   = text_field :item, field
@@ -59,7 +59,10 @@
             %tr
               - fields.each.with_index do |field, idx|
                 - if field_type == "check_box_tag"
-                  = check_box_tag "item[#{field}]", 1, @item[field] == "1", {disabled: true, :id => field}
+                  - check_box_class = 'K'
+                  - if %w(AccountsManagement Exams Collection Appeals Litigation Miscellaneous).include?(field_class)
+                    - check_box_class = 'K_sum'
+                  = check_box_tag "item[#{field}]", 1, @item[field] == "1", {disabled: true, :id => field, :class => check_box_class}
                   = label :item, field, field_names[idx], :class => "check_box_label"
                 - if field_type == "text_field"
                   = text_field :item, field

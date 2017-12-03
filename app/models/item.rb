@@ -296,7 +296,7 @@ class Item < ActiveRecord::Base
      ['Miscellaneous', self.k_miscellaneous,
       %i[K_2W K_2X K_2Y K_2Z K_2AA], 'check_box_tag'],
      ['Total', self.k_total,
-      [:K_total], 'check_box_tag'],
+      [:K_total], 'text_field'],
      ['Additional Case Information', self.k_additional_case_information,
       %i[K_3 K_4 K_5 K_6 K_7 K_8 K_9 K_10], 'check_box_tag'],
      ['Tax Court Activities', self.k_tax_court_activities,
