@@ -2,6 +2,10 @@
   .jumbotron
     =link_to image_tag("logo.jpg", :class => "logo"), items_path
     %h1 Chinese Newcomers Service Center
+    
+  // %h3.collapse-title(data-target=".collapse-content" data-toggle="collapse") Collapse
+  
+  // %div.collapse-content This
   
   %h1 Create New Case
 
@@ -30,44 +34,50 @@
     
     - Item.b_headings_names_and_fields.each do |form_b|
       - field_heading = form_b[0]
+      - field_class = form_b[0].delete(" ")
       - field_names = form_b[1]
       - fields = form_b[2]
       - field_type = form_b[3]
-      %h3 #{field_heading}
       
-      %table
-        %tbody
-          %tr
-            - fields.each.with_index do |field, idx|
-              - if field_type == "check_box_tag"
-                = check_box_tag "item[#{field}]", 1, false, :id => field
-                = label :item, field, field_names[idx], :class => "check_box_label"
-              - if field_type == "text_field"
-                = label :item, field, field_names[idx], :class => "input_label"
-                = text_field :item, field
-              %br
+      %h3.collapse-title(data-target=".collapse_content_#{field_class}" data-toggle="collapse") #{field_heading}
+      
+      %div(class="collapse_content_#{field_class} collapse")
+        %table
+          %tbody
+            %tr
+              - fields.each.with_index do |field, idx|
+                - if field_type == "check_box_tag"
+                  = check_box_tag "item[#{field}]", 1, false, :id => field
+                  = label :item, field, field_names[idx], :class => "check_box_label"
+                - if field_type == "text_field"
+                  = label :item, field, field_names[idx], :class => "input_label"
+                  = text_field :item, field
+                %br
               
     %h2.page-header Form 13424-K Case Information Report
     
   
     - Item.k_headings_names_and_fields.each do |form_k|
       - field_heading = form_k[0]
+      - field_class = form_k[0].delete(" ")
       - field_names = form_k[1]
       - fields = form_k[2]
       - field_type = form_k[3]
-      %h3 #{field_heading}
       
-      %table
-        %tbody
-          %tr
-            - fields.each.with_index do |field, idx|
-              - if field_type == "check_box_tag"
-                = check_box_tag "item[#{field}]", 1, false, :id => field
-                = label :item, field, field_names[idx], :class => "check_box_label"
-              - if field_type == "text_field"
-                = text_field :item, field
-                = label :item, field, field_names[idx], :class => "input_label"
-              %br
+      %h3.collapse-title(data-target=".collapse_content_#{field_class}" data-toggle="collapse") #{field_heading}
+      
+      %div(class="collapse_content_#{field_class} collapse")
+        %table
+          %tbody
+            %tr
+              - fields.each.with_index do |field, idx|
+                - if field_type == "check_box_tag"
+                  = check_box_tag "item[#{field}]", 1, false, :id => field
+                  = label :item, field, field_names[idx], :class => "check_box_label"
+                - if field_type == "text_field"
+                  = text_field :item, field
+                  = label :item, field, field_names[idx], :class => "input_label"
+                %br
     
     %h2.page-header Documents
         
