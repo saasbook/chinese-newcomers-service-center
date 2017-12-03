@@ -11,11 +11,12 @@
       = form_tag items_path, :method => "get", id: "search-cases-form" do
         = text_field_tag :search, params[:search], placeholder: "Search Cases", :class => "search-field"
         = submit_tag "Search", :class => "btn btn-info new-button"
-        
+    
     = link_to 'New Item', new_item_path, :class => "btn btn-info new-button index-btn"
+    = link_to 'See Case Metrics', metrics_path, :class => "btn btn-info new-button"
+
    
-    .btn.btn-info.new-button.index-btns
-      = link_to 'See Case Metrics', metrics_path
+      
 
 
   #{@items_alert_message}
