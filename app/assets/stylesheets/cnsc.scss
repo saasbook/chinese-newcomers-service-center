@@ -60,4 +60,7 @@
 
 .collapse-title {
     cursor: pointer;
+    &:hover {
+        color: #CB2028;
+    }
 }
