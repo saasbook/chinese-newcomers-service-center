@@ -36,6 +36,11 @@
     border-color: #CB2028;
     background-color: white;
 }
+.new-button:visited {
+    color: white;
+    background-color: #CB2028;
+    border-color: #CB2028
+}
 .index-btns {
     display: inline-block;
     margin-top: 10px;
@@ -54,13 +59,7 @@
     padding-bottom: 10px;
 }
 
+
 .client-detail {
     font-size: 50px;
-}
-
-.collapse-title {
-    cursor: pointer;
-    &:hover {
-        color: #CB2028;
-    }
 }
