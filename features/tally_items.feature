@@ -1,9 +1,9 @@
 @todo
 #PivotalTracker ID: 152662847
 Feature: Tally Items By Issue
-  As a case worker
-  So that I can quickly complete tax forms
-  I want to be able to count and view cases of a certain issue type
+  As a case worker,
+  So that I can quickly complete tax forms,
+  I want to be able to count the number of each issue and the total cases worked
   
   Background: Items have been added to the database
     
@@ -14,39 +14,17 @@ Feature: Tally Items By Issue
       | 333333333  | young Money | 0   | 1   | 1    |
       | 444444444  | mike        | 1   | 0   | 1    |
     
-    Scenario: Sort by Income Wages Issue
-      Given I am on the items index page
-      When I check "B_1"
-      And I uncheck "B_5"
-      And I uncheck "B_22"
-      And I press "Filter"
-      Then I should see "Mary"
-      And I should see "mike"
-      And I should not see "John"
-      And I should not see "young Money"
-      And I should see "Total Cases: 2"
+    Scenario: Count the total of each issue on metrics page
+      Given I am on the metrics page
+      And   I should see "2 ----- 1. Wages"             
+      And   I should see "0 ----- 2. Interest / Dividends (Schedule B)"
+      And   I should see "1 ----- 5. IRA / Pension"
+      And   I should see "2 ----- 22. Other Interest Expenses"
+      And   I should see "5 ----- Total Case Issues Worked (add lines 1 through 62)"
       
-    Scenario: Sort by Income Wages Issue and Income IRA Pension Issue
-      Given I am on the items index page
-      When I check "B_1"
-      And I check "B_5"
-      And I uncheck "B_22"
-      And I press "Filter"
-      Then I should see "Mary"
-      And I should see "young Money"
-      And I should see "mike"
-      And I should not see "John"
-      And I should see "Total Cases: 3"
-      
-    Scenario: Uncheck all relevant issues
-      Given I am on the items index page
-      When I uncheck "B_5"
-      And I uncheck "B_1"
-      And I uncheck "B_22"
-      And I press "Filter"
-      Then I should not see "Mary"
-      And I should not see "young Money"
-      And I should not see "mike"
-      And I should not see "John"
-      And I should see "Total Cases: 0"
-      
+    Scenario: Automatically add up the total for a new case
+      Given I am on the new item page
+      When  I check "B_2"
+      And   I check "B_3"
+      And   I check "B_62"
+      Then  I should see "Total Case Issues Worked (add lines 1 through 62) 3"

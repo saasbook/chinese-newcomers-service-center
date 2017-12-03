@@ -153,7 +153,7 @@ Feature: Create Item
     Given I am on the new item page
     When  I fill in "Client SSN" with "1234567890"
     When  I fill in "Client Name" with "John Smith"
-    And   I press "Create Item"
+    And   I press "Create Case"
     Then  I should see "John Smith"
 
   Scenario: Create a new item including checked fields
@@ -164,7 +164,7 @@ Feature: Create Item
     And I check "B_23"
     And I check "B_33"
     And I check "B_57"
-    And I press "Create Item"
+    And I press "Create Case"
     When I go to the show item page for "010101010"
     Then I should see "Checky McCheckbox"
     And I should see "Wages"
@@ -174,11 +174,11 @@ Feature: Create Item
 
   Scenario: Try to create a new item with no information (sad path)
     Given I am on the new item page
-    When I press "Create Item"
+    When I press "Create Case"
     Then I should see "Error: At least client name or SSN must be entered to create a case"
 
   Scenario: Try to create a new item with no client name or SSN (sad path)
     Given I am on the new item page
     When I check "B_1"
-    And I press "Create Item"
+    And I press "Create Case"
     Then I should see "Error: At least client name or SSN must be entered to create a case"

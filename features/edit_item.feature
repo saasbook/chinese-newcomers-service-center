@@ -24,7 +24,7 @@ Feature: Edit an existing item
       Given I am on the edit item page for "111111111"
       When  I fill in "Client SSN" with "1234567890"
       When  I fill in "Client Name" with "John Smith"
-      And   I press "Update Case"
+      And   I press "Save Changes"
       Then  I should see "John Smith"
   
     Scenario: Check that the appropriate fields exist when editing an existing case

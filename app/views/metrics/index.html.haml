@@ -1,15 +1,17 @@
-%br
--# Form B
-%h2 Form 13424-B Case Issues Report
+%h1 Case Metrics
 
+%h2 Form 13424-B Case Issues Report
 - last_heading = ""
 - Item.b_fields.each do |field|
   - field_heading = Item.b_hash[field][1]
   - field_name = Item.b_hash[field][0]
   - if field_heading != last_heading
-    %h2 #{field_heading}
+    %h3 #{field_heading}
     - last_heading = field_heading
+  /= text_field_tag :item, @metrics[field], {:disabled => true, :size => 1}
+  /&nbsp
   = @metrics[field]
+  /&nbsp&nbsp
   = "-----"
   = label :item, field, field_name
   %br

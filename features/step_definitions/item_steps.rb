@@ -36,6 +36,14 @@ Then("I should match {string}") do |string|
   pending # Write code here that turns the phrase above into concrete actions
 end
 
+When /^(?:|I )press "([^"]*)"$/ do |button|
+  first(:button, button).click
+end
+
+When /^(?:|I )follow "([^"]*)"$/ do |link|
+  first(:link, link).click
+end
+
 Given /^PENDING/ do
   pending
 end
