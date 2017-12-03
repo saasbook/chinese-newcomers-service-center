@@ -71,11 +71,11 @@
                   - check_box_class = 'K'
                   - if %w(AccountsManagement Exams Collection Appeals Litigation Miscellaneous).include?(field_class)
                     - check_box_class = 'K_sum'
-                  = check_box_tag "item[#{field}]", 1, false, :id => field, :class => check_box_class
+                  = check_box_tag "item[#{field}]", 1, @item[field] == "1", :id => field, :class => check_box_class
                   = label :item, field, field_names[idx], :class => "check_box_label"
                 - if field_type == "text_field"
-                  = text_field :item, field
                   = label :item, field, field_names[idx], :class => "input_label"
+                  = text_field :item, field
                 %br
           
     %h2 Documents
