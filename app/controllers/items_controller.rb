@@ -29,6 +29,7 @@ class ItemsController < ApplicationController
     if !search_term.nil?
       @items = Item.where('client_name like ? OR client_ssn like ? OR case_id like ?', "%#{search_term}%", "%#{search_term}%", "%#{search_term}%").order(ordering)
       @old_items = Item.where('(client_name like ? OR client_ssn like ? OR case_id like ?) AND date_opened < ?', "%#{search_term}%", "%#{search_term}%", "%#{search_term}%", 90.days.ago)
+      session[:search] = search_term
     else
       @items = Item.order(ordering)
       @old_items = Item.where('date_opened < ?', 90.days.ago)
@@ -77,7 +78,6 @@ class ItemsController < ApplicationController
       end
       return
     end
-
     @item = Item.create(item_params)
 
     if !@item.valid?
@@ -148,6 +148,11 @@ class ItemsController < ApplicationController
       :date_opened,
       :date_closed,
       :B_1,
+      :document1,
+      :document2,
+      :document3,
+      :document4,
+      :document5,
       "document1_file_name",
       "document1_content_type",
       "document1_file_size",
