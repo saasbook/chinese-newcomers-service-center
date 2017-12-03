@@ -5,14 +5,15 @@
 
   %h1 Edit Case
   
-  = submit_tag 'Save Changes', :class => "btn btn-info new-button index-btns"
-    
-  = link_to 'Delete Case', @item, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-info new-button index-btns" 
-    
-  = link_to 'Back To Homepage', items_path, :class => "btn btn-info new-button index-btns"
+
   
   = form_tag item_path(@item), :method => :put, :multipart => true do
   
+    = submit_tag 'Save Changes', :class => "btn btn-info new-button index-btns"
+    = link_to 'Delete Case', @item, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-info new-button index-btns" 
+    = link_to 'Back To Homepage', items_path, :class => "btn btn-info new-button index-btns"
+  
+    %br
     = label :item, :client_name, 'Client Name', :class => "input_label"
     = text_field :item, 'client_name'
     %br
