@@ -16,17 +16,18 @@ Feature: search for items in database
     And I am on the items index page
 
   Scenario: search for items by SSN
-    When I fill in "Search Cases" with "000000000"
+    When I fill in "search" with "000000000"
     And I press "Search"
     Then I should see "Ender Wiggin"
 
   Scenario: search for items by client name
-    When I fill in "Search Cases" with "Ender Wiggin"
+    When I fill in "search" with "Ender Wiggin"
     And I press "Search"
     Then I should see "000000000"
 
   Scenario: search for items by case number
-    When I fill in "Search Cases" with "2017-06-0000"
+    #When I fill in "Search Cases" with "2017-06-0000"
+    When I fill in "search" with "2017-06-0000"
     And I press "Search"
     Then I should see "John Doe"
 

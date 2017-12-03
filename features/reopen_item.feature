@@ -16,7 +16,7 @@ Feature: Reopen an existing item
     Scenario: reopen an existing item
       Given I am on the edit item page for "111111111"
       And I select "//" as the date for "date_closed"
-      And I press "Update Case"
+      And I press "Save Changes"
       Then I should be on the items index page
       And I should not see "2000-01-02"
      

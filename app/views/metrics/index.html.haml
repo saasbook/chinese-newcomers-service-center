@@ -14,8 +14,11 @@
         - if field_heading != last_heading
             %h2 #{field_heading}
             - last_heading = field_heading
+        /= text_field_tag :item, @metrics[field], {:disabled => true, :size => 1}
+        /&nbsp
         = @metrics[field]
         = "-----"
+        /&nbsp&nbsp
         = label :item, field, field_name
         %br
               
