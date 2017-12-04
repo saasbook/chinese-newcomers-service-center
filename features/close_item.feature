@@ -17,8 +17,7 @@ Feature: Close Item
  
 Scenario: Close an item
       Given I am on the edit item page for "222222222"
-      And I select "2012/January/1" as the date for "date_closed"
-      And I press "Save Changes"
-      Then I should be on the items index page
-      And I should see "2012-01-01"
+      And   I select "2012/January/1" as the date for "date_closed"
+      And   I press "Save Changes"
+      Then  I should see "Date Closed: 2012-01-01"
       
