@@ -1,5 +1,7 @@
 class MetricsController < ApplicationController
   def index
-  	@metrics = Item.metrics
+  	tuple = Item.metrics
+  	@metrics = tuple[0]
+  	@warning_string = tuple[1]
   end
 end
