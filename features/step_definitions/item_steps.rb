@@ -47,3 +47,12 @@ end
 Given /^PENDING/ do
   pending
 end
+
+When /^I upload "(.*)" to "(.*)"/ do |file, doc|
+  page.attach_file(doc, Rails.root + file)
+end
+
+When /^I delete file "(.*)" from "(.*)"/ do |file, doc|
+  #page.attach_file(doc, Rails.root + file)
+  doc = nil
+end
