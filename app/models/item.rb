@@ -17,6 +17,20 @@ class Item < ActiveRecord::Base
     Item.all_fields.each do |field|
       field_count = Item.where(field => 1).length
       metrics[field] = field_count
+      if field == :B_total
+        metrics[field] = 0
+        listOfVals = Item.select("B_total").where("B_total != \"\"")
+        listOfVals.each do |val|
+            metrics[field] += val[field].to_i
+        end
+      end
+      if field == :K_total
+        metrics[field] = 0
+        listOfVals = Item.select("K_total").where("K_total != \"\"")
+        listOfVals.each do |val|
+            metrics[field] += val[field].to_i
+        end
+      end
     end
     metrics
   end

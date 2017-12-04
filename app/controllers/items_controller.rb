@@ -267,7 +267,7 @@ class ItemsController < ApplicationController
         "K_2Y",
         "K_2Z",
         "K_2AA",
-        "K_T",
+        "K_total",
         "K_3",
         "K_4",
         "K_5",
