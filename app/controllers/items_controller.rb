@@ -3,45 +3,38 @@ class ItemsController < ApplicationController
 
   # GET /items
   # GET /items.json
-  def index
 
+  def search_filter(search_term)
+    @items = @items.where('client_name like ? OR client_ssn like ? OR case_id like ?', "%#{search_term}%", "%#{search_term}%", "%#{search_term}%")
+    @old_items = @items.where('client_name like ? OR client_ssn like ? OR case_id like ?', "%#{search_term}%", "%#{search_term}%", "%#{search_term}%")
+    session[:search] = search_term
+  end
+
+  def old_case_alert
+    if @old_items.empty?
+      false
+    else
+      @items_alert_message = 'Case has been open for 90 days: '
+      @old_items.each do |item|
+        @items_alert_message += item[:case_id] + ', '
+      end
+      @items_alert_message
+    end
+  end
+
+  def index
     @issues_and_types = Item.issues_and_types
-    @selected_issues = params[:issues] || session[:issues] || {}
     sort_by = params[:sort_by] || session[:sort_by]
     search_term = params[:search] || session[:search]
 
-    # if params[:sort_by] != session[:sort_by] || params[:search] != session[:search] || params[:issues] != session[:issues]
-    #   session[:sort_by] = sort_by
-    #   session[:search] = search_term
-    #   session[:issues] = @selected_issues
-    #   redirect_to(items_path(sort_by: sort_by, search: search_term, issues: @selected_issues)) && return
-    # end
+    @items = Item
+    @old_items = Item.where('date_opened < ? AND date_closed IS NULL', 90.days.ago)
+    @items_alert_message = old_case_alert || ''
 
-    # case sort_by
-    #   when 'client_ssn'
-    #     ordering = 'client_ssn'
-    #   when 'client_name'
-    #     ordering = 'client_name'
-    # end
+    search_filter(search_term) unless search_term.nil?
 
-    ordering = sort_by
-
-    if !search_term.nil?
-      @items = Item.where('client_name like ? OR client_ssn like ? OR case_id like ?', "%#{search_term}%", "%#{search_term}%", "%#{search_term}%").order(ordering)
-      @old_items = Item.where('(client_name like ? OR client_ssn like ? OR case_id like ?) AND date_opened < ?', "%#{search_term}%", "%#{search_term}%", "%#{search_term}%", 90.days.ago)
-      session[:search] = search_term
-    else
-      @items = Item.order(ordering)
-      @old_items = Item.where('date_opened < ?', 90.days.ago)
-    end
-
-    @items_alert_message = ''
-    unless @old_items.empty?
-      @items_alert_message = 'Case has been open for 90 days: '
-      @old_items.each do |item|
-        @items_alert_message += item[:client_ssn] + ', '
-      end
-    end
+    @items = @items.order(sort_by)
+    @items = @items.reverse_order if %w[date_opened date_closed].include?(sort_by)
   end
 
   # GET /items/1
@@ -102,7 +95,7 @@ class ItemsController < ApplicationController
     tempCaseId = tempCaseIdBase + format('%03d', idNum)
     @item.update_attributes(case_id: tempCaseId)
     flash[:notice] = "Case for #{@item.client_name} successfully created"
-    redirect_to item_path(@item)
+    redirect_to items_path
   end
 
   # PATCH/PUT /items/1

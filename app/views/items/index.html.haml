@@ -30,11 +30,11 @@
     %thead
       %tr
         %th Case ID
-        %th{:class => @client_ssn_header}= link_to 'SSN', items_path(:sort_by => 'client_ssn'), :id => 'client_ssn_header'
+        %th Client SSN
         %th{:class => @client_name_header}= link_to 'Client Name', items_path(:sort_by => 'client_name'), :id => 'client_name_header'
-        %th Date Opened
-        %th Date Closed
-  
+        %th{:class => @date_opened_header}= link_to 'Date Opened', items_path(:sort_by => 'date_opened'), :id => 'date_opened_header'
+        %th{:class => @date_closed_header}= link_to 'Date Closed', items_path(:sort_by => 'date_closed'), :id => 'date_closed_header'
+
     %tbody
       - @items.each do |item|
         %tr
