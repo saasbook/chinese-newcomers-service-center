@@ -20,6 +20,7 @@ Scenario: Generate Case ID upon Case Creation
       When  I fill in "Client Name" with "Jilly Job Boe Jr"
       And   I select "2012/December/1" as the date for "date_opened"
       And   I press "Create Case"
+      And   I should not see "20131201000" 
       And   I should see "20121201001"
       
 Scenario: Generate Case ID upon Case Creation Based on Date Opened
@@ -31,6 +32,7 @@ Scenario: Generate Case ID upon Case Creation Based on Date Opened
       When  I fill in "Client Name" with "Billy Bob Joe Jr"
       And   I select "2012/December/1" as the date for "date_opened"
       And   I press "Create Case"
+      And   I should not see "20131201000"
       And   I should see "20121201000"
       
       Given I am on the new item page
@@ -38,6 +40,7 @@ Scenario: Generate Case ID upon Case Creation Based on Date Opened
       When  I fill in "Client Name" with "Jilly Job Boe Jr"
       And   I select "2013/December/1" as the date for "date_opened"
       And   I press "Create Case"
+      Then  I should be on the items index page
       And   I should see "20131201000"
       And   I should not see "20131201001"
       And   I should not see "20121201001"
