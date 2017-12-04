@@ -21,3 +21,23 @@ https://www.pivotaltracker.com/n/projects/2118614
 Create a case database for Low-income Taxpayer clinic (LITC). The LITC cases can take up to months, such as some of the court cases, while some can be done in the same day. And some of the cases are event with multiple issues that need to be reopen at some point. Therefore, we have a hard time to keep track the clients and have hard time when we do reports.
 
 http://www.chinesenewcomers.org/en/front-page/
+
+
+
+#### INSTALL INSTRUCTIONS
+
+## Local Deploy
+1.  Clone the Repo
+2.  Run:  bundle install --without production
+3.  Run:  rake db:reset
+4.  Run:  rake db:migrate
+5.  Run:  rails server
+6.  Open Browser to:  localhost:3000
+
+## Heroku Deploy
+1.  Clone the Repo
+2.  Create Heroku repository
+2.  Run:  git push heroku master
+3.  Run:  heroku pg:reset
+4.  Run:  heroku run rake db:migrate
+6.  Open Browser to heroku page
