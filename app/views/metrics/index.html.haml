@@ -23,3 +23,18 @@
         %br
               
     %h1 Form 13424-K Case Information Report
+
+    - last_heading = ""
+    - Item.k_fields.each do |field|
+        - field_heading = Item.k_hash[field][1]
+        - field_name = Item.k_hash[field][0]
+        - if field_heading != last_heading
+            %h2 #{field_heading}
+            - last_heading = field_heading
+        /= text_field_tag :item, @metrics[field], {:disabled => true, :size => 1}
+        /&nbsp
+        = @metrics[field]
+        = "-----"
+        /&nbsp&nbsp
+        = label :item, field, field_name
+        %br
