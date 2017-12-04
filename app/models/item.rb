@@ -54,7 +54,7 @@ class Item < ActiveRecord::Base
   end
 
   def self.k_total_fields
-    %i[K_1A K_1B K_1C K_1D K_1E K_2A K_2B K_2C K_2D
+    %i[K_2A K_2B K_2C K_2D
        K_2E K_2F K_2G K_2H K_2I K_2J K_2K K_2L K_2M
        K_2N K_2O K_2P K_2Q K_2R K_2S K_2T K_2U K_2V
        K_2W K_2X K_2Y K_2Z K_2AA]
