@@ -13,4 +13,29 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap-sprockets
 //= require_tree .
+
+function ready() {
+    function updateSum() {
+        var b_total = 0;
+        $(".B_sum:checked").each(function (i, n) {
+            b_total += parseInt($(n).val());
+        });
+        $("#item_B_total").val(b_total);
+
+        var k_total = 0;
+        $(".K_sum:checked").each(function (i, n) {
+            k_total += parseInt($(n).val());
+        });
+        $("#item_K_total").val(k_total);
+
+    }
+
+    // run the update on every checkbox change and on startup
+    $("input.B_sum").change(updateSum);
+    $("input.K_sum").change(updateSum);
+    updateSum();
+}
+
+$(document).on('turbolinks:load', ready);

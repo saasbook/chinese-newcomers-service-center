@@ -16,3 +16,6 @@
 !/log/.keep
 /tmp
 .idea/
+coverage/
+
+public/system/items/*

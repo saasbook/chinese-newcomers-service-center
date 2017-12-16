@@ -1,0 +1,108 @@
+.container
+  .jumbotron
+    =link_to image_tag("logo.jpg", :class => "logo"), items_path
+    %h1 Chinese Newcomers Service Center
+
+  %h1 Edit Case
+  
+
+  
+  = form_tag item_path(@item), :method => :put, :multipart => true do
+  
+    = submit_tag 'Save Changes', :class => "btn btn-info new-button index-btns"
+    = link_to 'Delete Case', @item, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-info new-button index-btns" 
+    = link_to 'Back To Homepage', items_path, :class => "btn btn-info new-button index-btns"
+  
+    %br
+    = label :item, :client_name, 'Client Name', :class => "input_label"
+    = text_field :item, 'client_name'
+    %br
+    = label :item, :client_ssn, 'Client SSN', :class => "input_label"
+    = text_field :item, 'client_ssn'
+    %br
+    = label :item, :date_opened, 'Date Opened', :class => "input_label"
+    = date_select :item, :date_opened
+    %br
+    = label :item, :date_closed, 'Date Closed', :class => "input_label"
+    = date_select :item, :date_closed, {:include_blank => true}
+    
+    %br
+    -# Form B
+    %h2 Form 13424-B Case Issues Report
+    
+    - Item.b_headings_names_and_fields.each do |form_b|
+      - field_heading = form_b[0]
+      - field_class = form_b[0].delete(" ")
+      - field_names = form_b[1]
+      - fields = form_b[2]
+      - field_type = form_b[3]
+      %h3.collapse-title(data-target=".collapse_content_#{field_class}" data-toggle="collapse") #{field_heading}
+      
+      %div(class="collapse_content_#{field_class} collapse")
+        %table
+          %tbody
+            %tr
+              - fields.each.with_index do |field, idx|
+                - if field_type == "check_box_tag"
+                  = check_box_tag "item[#{field}]", 1, @item[field] == "1", :id => field, :class => 'B_sum'
+                  = label :item, field, field_names[idx], :class => "check_box_label"
+                - if field_type == "text_field"
+                  = text_field :item, field
+                  = label :item, field, field_names[idx], :class => "input_label"
+                %br
+              
+    %h2 Form 13424-K Case Information Report
+    
+  
+    - Item.k_headings_names_and_fields.each do |form_k|
+      - field_heading = form_k[0]
+      - field_class = form_k[0].delete(" ")
+      - field_names = form_k[1]
+      - fields = form_k[2]
+      - field_type = form_k[3]
+      %h3.collapse-title(data-target=".collapse_content_#{field_class}" data-toggle="collapse") #{field_heading}
+      
+      %div(class="collapse_content_#{field_class} collapse")
+        %table
+          %tbody
+            %tr
+              - fields.each.with_index do |field, idx|
+                - if field_type == "check_box_tag"
+                  - check_box_class = 'K'
+                  - if %w(AccountsManagement Exams Collection Appeals Litigation Miscellaneous).include?(field_class)
+                    - check_box_class = 'K_sum'
+                  = check_box_tag "item[#{field}]", 1, @item[field] == "1", :id => field, :class => check_box_class
+                  = label :item, field, field_names[idx], :class => "check_box_label"
+                - if field_type == "text_field"
+                  = label :item, field, field_names[idx], :class => "input_label"
+                  = text_field :item, field
+                %br
+          
+    %h2 Documents
+    = file_field(:item, :document1) if not @item.document1.exists?
+    = check_box_tag(:remove_document1) if @item.document1.exists?
+    = label(:item, :remove_document1, 'DELETE ' + @item.document1.original_filename + '?') if @item.document1.exists?
+    %br
+    = file_field(:item, :document2) if not @item.document2.exists?
+    = check_box_tag(:remove_document2) if @item.document2.exists?
+    = label(:item, :remove_document2, 'DELETE ' + @item.document2.original_filename + '?') if @item.document2.exists?
+    %br
+    = file_field(:item, :document3) if not @item.document3.exists?
+    = check_box_tag(:remove_document3) if @item.document3.exists?
+    = label(:item, :remove_document3, 'DELETE ' + @item.document3.original_filename + '?') if @item.document3.exists?
+    %br
+    = file_field(:item, :document4) if not @item.document4.exists?
+    = check_box_tag(:remove_document4) if @item.document4.exists?
+    = label(:item, :remove_document4, 'DELETE ' + @item.document4.original_filename + '?') if @item.document4.exists?
+    %br
+    = file_field(:item, :document5) if not @item.document5.exists?
+    = check_box_tag(:remove_document5) if @item.document5.exists?
+    = label(:item, :remove_document5, 'DELETE ' + @item.document5.original_filename + '?') if @item.document5.exists?
+    %br
+    %br
+    
+    = submit_tag 'Save Changes', :class => "btn btn-info new-button index-btns"
+    
+    = link_to 'Delete Case', @item, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-info new-button index-btns" 
+    
+    = link_to 'Back To Homepage', items_path, :class => "btn btn-info new-button index-btns"

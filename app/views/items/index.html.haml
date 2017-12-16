@@ -1,0 +1,51 @@
+.container
+  .jumbotron
+    = link_to image_tag("logo.jpg", :class => "logo"), items_path(:search => "")
+    %h1 Chinese Newcomers Service Center
+  
+  %p#notice= notice
+  
+
+  .index-nav
+    .index-btns
+      = form_tag items_path, :method => "get", id: "search-cases-form" do
+
+        - if not session[:search].nil? and session[:search].empty?
+          = text_field_tag :search, params[:search], placeholder: "Search Cases", :class => "search-field"
+        - else
+          = text_field_tag :search, params[:search], value: session[:search], :class => "search-field"
+        = submit_tag "Search", :class => "btn btn-info new-button"
+    
+    = link_to 'New Item', new_item_path, :class => "btn btn-info new-button"
+    = link_to 'See Case Metrics', metrics_path, :class => "btn btn-info new-button"
+
+
+   
+      
+
+
+  #{@items_alert_message}
+  
+  %table.table
+    %thead
+      %tr
+        %th Case ID
+        %th Client SSN
+        %th{:class => @client_name_header}= link_to 'Client Name', items_path(:sort_by => 'client_name'), :id => 'client_name_header'
+        %th{:class => @date_opened_header}= link_to 'Date Opened', items_path(:sort_by => 'date_opened'), :id => 'date_opened_header'
+        %th{:class => @date_closed_header}= link_to 'Date Closed', items_path(:sort_by => 'date_closed'), :id => 'date_closed_header'
+
+    %tbody
+      - @items.each do |item|
+        %tr
+          %td= item.case_id
+          %td= item.client_ssn
+          %td= item.client_name
+          %td= item.date_opened
+          %td= item.date_closed
+          %td= link_to 'Show', item
+          %td= link_to 'Edit', edit_item_path(item)
+  
+  %br
+  
+

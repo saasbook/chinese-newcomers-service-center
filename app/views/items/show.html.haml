@@ -1,0 +1,90 @@
+.container
+  .jumbotron
+    =link_to image_tag("logo.jpg", :class => "logo"), items_path
+    %h1 Chinese Newcomers Service Center
+    
+  = link_to 'Back To Homepage', items_path, :class => "btn btn-info new-button index-btns"
+  = link_to 'Edit Case', edit_item_path(@item), :class => "btn btn-info new-button index-btns"
+
+
+  %p#notice= notice
+  %h1.page-header Case Details
+  %h4 Client Name: #{@item.client_name}
+  %hr
+  %h4 SSN: #{@item.client_ssn}
+  %hr
+  %h4 Case ID: #{@item.case_id}
+  %hr
+  %h4 Date Opened: #{@date_opened_string}
+  %hr
+  %h4 Date Closed: #{@date_closed_string}
+
+  %br
+    -# Form B
+    %h2.page-header Form 13424-B Case Issues Report
+    
+    - Item.b_headings_names_and_fields.each do |form_b|
+      - field_heading = form_b[0]
+      - field_class = form_b[0].delete(" ")
+      - field_names = form_b[1]
+      - fields = form_b[2]
+      - field_type = form_b[3]
+      %h3.collapse-title(data-target=".collapse_content_#{field_class}" data-toggle="collapse") #{field_heading}
+      
+      %div(class="collapse_content_#{field_class} collapse")
+        %table
+          %tbody
+            %tr
+              - fields.each.with_index do |field, idx|
+                - if field_type == "check_box_tag"
+                  = check_box_tag "item[#{field}]", 1, @item[field] == "1", {disabled: true, :id => field, :class => 'B_sum'}
+                  = label :item, field, field_names[idx], :class => "check_box_label"
+                - if field_type == "text_field"
+                  = text_field :item, field
+                  = label :item, field, field_names[idx]
+                %br
+              
+    %h2.page-header Form 13424-K Case Information Report
+    
+  
+    - Item.k_headings_names_and_fields.each do |form_k|
+      - field_heading = form_k[0]
+      - field_class = form_k[0].delete(" ")
+      - field_names = form_k[1]
+      - fields = form_k[2]
+      - field_type = form_k[3]
+      %h3.collapse-title(data-target=".collapse_content_#{field_class}" data-toggle="collapse") #{field_heading}
+      
+      %div(class="collapse_content_#{field_class} collapse")
+        %table
+          %tbody
+            %tr
+              - fields.each.with_index do |field, idx|
+                - if field_type == "check_box_tag"
+                  - check_box_class = 'K'
+                  - if %w(AccountsManagement Exams Collection Appeals Litigation Miscellaneous).include?(field_class)
+                    - check_box_class = 'K_sum'
+                  = check_box_tag "item[#{field}]", 1, @item[field] == "1", {disabled: true, :id => field, :class => check_box_class}
+                  = label :item, field, field_names[idx], :class => "check_box_label"
+                - if field_type == "text_field"
+                  = text_field :item, field
+                  = label :item, field, field_names[idx]
+                %br
+        
+  %h2 Documents
+        
+  = link_to(@item.document1.original_filename, @item.document1.url, target: '_blank') if @item.document1.exists?
+  %br
+  = link_to(@item.document2.original_filename, @item.document2.url, target: '_blank') if @item.document2.exists?
+  %br
+  = link_to(@item.document3.original_filename, @item.document3.url, target: '_blank') if @item.document3.exists?
+  %br
+  = link_to(@item.document4.original_filename, @item.document4.url, target: '_blank') if @item.document4.exists?
+  %br
+  = link_to(@item.document5.original_filename, @item.document5.url, target: '_blank') if @item.document5.exists?
+  %br
+  %br
+  
+  
+  = link_to 'Back To Homepage', items_path, :class => "btn btn-info new-button index-btns"
+  = link_to 'Edit Case', edit_item_path(@item), :class => "btn btn-info new-button index-btns"

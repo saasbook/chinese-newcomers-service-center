@@ -1,0 +1,44 @@
+.container
+    .jumbotron
+        = link_to image_tag("logo.jpg", :class => "logo"), items_path(:search => "")
+        %h1 Metrics
+    = form_tag items_path, :multipart => true do
+        = link_to 'Back To Homepage', items_path, :class => "btn btn-info new-button index-btns"
+
+    -if not @warning_string.empty?
+        = @warning_string
+
+    -# Form B
+    %h2 Form 13424-B Case Issues Report
+    
+    - last_heading = ""
+    - Item.b_fields.each do |field|
+        - field_heading = Item.b_hash[field][1]
+        - field_name = Item.b_hash[field][0]
+        - if field_heading != last_heading
+            %h2 #{field_heading}
+            - last_heading = field_heading
+        /= text_field_tag :item, @metrics[field], {:disabled => true, :size => 1}
+        /&nbsp
+        = @metrics[field]
+        = "-----"
+        /&nbsp&nbsp
+        = label :item, field, field_name
+        %br
+              
+    %h1 Form 13424-K Case Information Report
+
+    - last_heading = ""
+    - Item.k_fields.each do |field|
+        - field_heading = Item.k_hash[field][1]
+        - field_name = Item.k_hash[field][0]
+        - if field_heading != last_heading
+            %h2 #{field_heading}
+            - last_heading = field_heading
+        /= text_field_tag :item, @metrics[field], {:disabled => true, :size => 1}
+        /&nbsp
+        = @metrics[field]
+        = "-----"
+        /&nbsp&nbsp
+        = label :item, field, field_name
+        %br

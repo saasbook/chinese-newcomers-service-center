@@ -1,0 +1,77 @@
+.container .jumbotron {
+    padding-left: 0px;
+}
+.jumbotron {
+    background-color: white;
+    width: 100%;
+    margin: 0;
+}
+.jumbotron h1 {
+    display: inline;
+    font-size: 50px;
+    color: black;
+}
+.logo {
+    display: inline;
+    width: 100px;
+}
+.search-field {
+    height: 34px;
+    width: 300px;
+}
+.new-button {
+    background-color: #CB2028;
+    border-color: #CB2028;
+    border-radius: 0px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+.new-button:hover {
+    color: #CB2028;
+    border-color: #CB2028;
+    background-color: white;
+}
+.new-button:active {
+    color: #CB2028;
+    border-color: #CB2028;
+    background-color: white;
+}
+.new-button:visited {
+    color: white;
+    background-color: #CB2028;
+    border-color: #CB2028
+}
+
+.btn-info:hover {
+    color: #CB2028;
+    border-color: #CB2028;
+    background-color: white;
+}
+
+.index-btns {
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 40px;
+}
+
+.check_box_label {
+    margin-left: 10px;
+}
+
+.input_label {
+    margin-right: 8px;
+}
+.index-nav {
+    padding-bottom: 10px;
+}
+
+.client-detail {
+    font-size: 50px;
+}
+
+.collapse-title:hover {
+    color: #CB2028;
+    cursor: pointer;
+    text-decoration: underline;
+}
