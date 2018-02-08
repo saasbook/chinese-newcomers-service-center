@@ -1,0 +1,316 @@
+%h1 Listing items
+
+%p#notice= notice
+
+= form_tag items_path, :method => "get", id: "search-cases-form" do
+  = text_field_tag :search, params[:search], placeholder: "Search Cases"
+  = submit_tag "Search" 
+
+  %h2 Income Issues
+
+  %tr
+    = check_box_tag "income_issues_1_wages", 1, false, :id => "income_issues_1_wages" 
+    = label :item, :income_issues_1_wages, '1. Wages' 
+  -# %br
+  %tr
+    = check_box_tag "income_issues_2_interest_divid", 1, false, :id => "income_issues_2_interest_divid" 
+    = label :item, :income_issues_2_interest_divid, '2. Interest / Dividends (Schedule B)' 
+  -# %br
+  %tr
+    = check_box_tag "income_issues_3_business_incom", 1, false, :id => "income_issues_3_business_incom" 
+    = label :item, :income_issues_3_business_incom, '3. Business Income (Schedule C)' 
+  -# %br
+  %tr
+    = check_box_tag "income_issues_4_capital_gain_o", 1, false, :id => "income_issues_4_capital_gain_o" 
+    = label :item, :income_issues_4_capital_gain_o, '4. Capital Gain or Loss (Schedule D)' 
+  -# %br
+  %tr
+    = check_box_tag "income_issues_5_ira_pension", 1, false, :id => "income_issues_5_ira_pension" 
+    = label :item, :income_issues_5_ira_pension, '5. IRA / Pension' 
+  -# %br
+  %tr
+    = check_box_tag "income_issues_6_social_securit", 1, false, :id => "income_issues_6_social_securit" 
+    = label :item, :income_issues_6_social_securit, '6. Social Security Benefits' 
+  -# %br
+  %tr
+    = check_box_tag "income_issues_7_alimony", 1, false, :id => "income_issues_7_alimony" 
+    = label :item, :income_issues_7_alimony, '7. Alimony' 
+  -# %br
+  %tr
+    = check_box_tag "income_issues_8_rental_royalty", 1, false, :id => "income_issues_8_rental_royalty" 
+    = label :item, :income_issues_8_rental_royalty, '8. Rental, Royalty, Partnership, S Corp (Schedule E)' 
+  -# %br
+  %tr
+    = check_box_tag "income_issues_9_farming_income", 1, false, :id => "income_issues_9_farming_income" 
+    = label :item, :income_issues_9_farming_income, '9. Farming Income (Schedule F)' 
+  -# %br
+  %tr
+    = check_box_tag "income_issues_10_unemployment", 1, false, :id => "income_issues_10_unemployment" 
+    = label :item, :income_issues_10_unemployment, '10. Unemployment' 
+  -# %br
+  %tr
+    = check_box_tag "income_issues_11_gambling_winn", 1, false, :id => "income_issues_11_gambling_winn" 
+    = label :item, :income_issues_11_gambling_winn, '11. Gambling Winnings' 
+  -# %br
+  %tr
+    = check_box_tag "income_issues_12_cancellation", 1, false, :id => "income_issues_12_cancellation" 
+    = label :item, :income_issues_12_cancellation, '12. Cancellation of Debt' 
+  -# %br
+  %tr
+    = check_box_tag "income_issues_13_settlement_pr", 1, false, :id => "income_issues_13_settlement_pr" 
+    = label :item, :income_issues_13_settlement_pr, '13. Settlement Proceeds' 
+  -# %br
+  %tr
+    = check_box_tag "income_issues_14_other", 1, false, :id => "income_issues_14_other" 
+    = label :item, :income_issues_14_other, '14. Other' 
+  -# %br
+
+%h2 Deduction Issues
+
+%table
+%tbody
+  %tr
+    = check_box_tag "deduction_issues_15_alimony", 1, false, :id => "deduction_issues_15_alimony" 
+    = label :item, :deduction_issues_15_alimony, '15. Alimony' 
+  -# %br
+  %tr
+    = check_box_tag "deduction_issues_16_education", 1, false, :id => "deduction_issues_16_education" 
+    = label :item, :deduction_issues_16_education, '16. Education Expenses (Including student loan interest)' 
+  -# %br
+  %tr
+    = check_box_tag "deduction_issues_17_moving_exp", 1, false, :id => "deduction_issues_17_moving_exp" 
+    = label :item, :deduction_issues_17_moving_exp, '17. Moving Expenses' 
+  -# %br
+  %tr
+    = check_box_tag "deduction_issues_18_ira_deduct", 1, false, :id => "deduction_issues_18_ira_deduct" 
+    = label :item, :deduction_issues_18_ira_deduct, '18. IRA Deduction' 
+  -# %br
+  %tr
+    = check_box_tag "deduction_issues_19_medical_an", 1, false, :id => "deduction_issues_19_medical_an" 
+    = label :item, :deduction_issues_19_medical_an, '19. Medical and Dental Expenses' 
+  -# %br
+  %tr
+    = check_box_tag "deduction_issues_20_state_and", 1, false, :id => "deduction_issues_20_state_and" 
+    = label :item, :deduction_issues_20_state_and, '20. State and Local Taxes' 
+  -# %br
+  %tr
+    = check_box_tag "deduction_issues_21_home_mortg", 1, false, :id => "deduction_issues_21_home_mortg" 
+    = label :item, :deduction_issues_21_home_mortg, '21. Home Mortgage Interest' 
+  -# %br
+  %tr
+    = check_box_tag "deduction_issues_22_other_inte", 1, false, :id => "deduction_issues_22_other_inte" 
+    = label :item, :deduction_issues_22_other_inte, '22. Other Interest Expenses' 
+  -# %br
+  %tr
+    = check_box_tag "deduction_issues_23_charitable", 1, false, :id => "deduction_issues_23_charitable" 
+    = label :item, :deduction_issues_23_charitable, '23. Charitable Contributions' 
+  -# %br
+  %tr
+    = check_box_tag "deduction_issues_24_casualty_a", 1, false, :id => "deduction_issues_24_casualty_a" 
+    = label :item, :deduction_issues_24_casualty_a, '24. Casualty and Theft Losses' 
+  -# %br
+  %tr
+    = check_box_tag "deduction_issues_25_unreimburs", 1, false, :id => "deduction_issues_25_unreimburs" 
+    = label :item, :deduction_issues_25_unreimburs, '25. Unreimbursed Employee Business Expenses' 
+  -# %br
+  %tr
+    = check_box_tag "deduction_issues_26_other_item", 1, false, :id => "deduction_issues_26_other_item" 
+    = label :item, :deduction_issues_26_other_item, '26. Other Itemized Deductions' 
+  -# %br
+  %tr
+    = check_box_tag "deduction_issues_27_business_e", 1, false, :id => "deduction_issues_27_business_e" 
+    = label :item, :deduction_issues_27_business_e, '27. Business Expenses (Schedule C)' 
+  -# %br
+
+%h2 Credit Issues
+
+%table
+%tbody
+  %tr
+    = check_box_tag "credit_issues_28_child_and_dep", 1, false, :id => "credit_issues_28_child_and_dep" 
+    = label :item, :credit_issues_28_child_and_dep, '28. Child and Dependent Care Credit' 
+  -# %br
+  %tr
+    = check_box_tag "credit_issues_29_education_cre", 1, false, :id => "credit_issues_29_education_cre" 
+    = label :item, :credit_issues_29_education_cre, '29. Education Credits' 
+  -# %br
+  %tr
+    = check_box_tag "credit_issues_30_child_tax_cre", 1, false, :id => "credit_issues_30_child_tax_cre" 
+    = label :item, :credit_issues_30_child_tax_cre, '30. Child Tax Credit / Additional Child Tax Credit' 
+  -# %br
+  %tr
+    = check_box_tag "credit_issues_31_earned_income", 1, false, :id => "credit_issues_31_earned_income" 
+    = label :item, :credit_issues_31_earned_income, '31. Earned Income Tax Credit' 
+  -# %br
+  %tr
+    = check_box_tag "credit_issues_32_first_time_ho", 1, false, :id => "credit_issues_32_first_time_ho" 
+    = label :item, :credit_issues_32_first_time_ho, '32. First-Time Homebuyer Credit' 
+  -# %br
+  %tr
+    = check_box_tag "credit_issues_33_premium_tax_c", 1, false, :id => "credit_issues_33_premium_tax_c" 
+    = label :item, :credit_issues_33_premium_tax_c, '33. Premium Tax Credit' 
+  -# %br
+  %tr
+    = check_box_tag "credit_issues_34_other_credits", 1, false, :id => "credit_issues_34_other_credits" 
+    = label :item, :credit_issues_34_other_credits, '34. Other Credits' 
+  -# %br
+
+%h2 Status Issues
+
+%table
+%tbody
+  %tr
+    = check_box_tag "status_issues_35_ssn_tin", 1, false, :id => "status_issues_35_ssn_tin" 
+    = label :item, :status_issues_35_ssn_tin, '35. SSN / TIN' 
+  -# %br
+  %tr
+    = check_box_tag "status_issues_36_itin", 1, false, :id => "status_issues_36_itin" 
+    = label :item, :status_issues_36_itin, '36. ITIN' 
+  -# %br
+  %tr
+    = check_box_tag "status_issues_37_filing_status", 1, false, :id => "status_issues_37_filing_status" 
+    = label :item, :status_issues_37_filing_status, '37. Filing Status' 
+  -# %br
+  %tr
+    = check_box_tag "status_issues_38_personal_depe", 1, false, :id => "status_issues_38_personal_depe" 
+    = label :item, :status_issues_38_personal_depe, '38. Personal / Dependency Exemptions' 
+  -# %br
+  %tr
+    = check_box_tag "status_issues_39_injured_spous", 1, false, :id => "status_issues_39_injured_spous" 
+    = label :item, :status_issues_39_injured_spous, '39. Injured Spouse' 
+  -# %br
+  %tr
+    = check_box_tag "status_issues_40_innocent_spou", 1, false, :id => "status_issues_40_innocent_spou" 
+    = label :item, :status_issues_40_innocent_spou, '40. Innocent Spouse' 
+  -# %br
+  %tr
+    = check_box_tag "status_issues_41_employment_re", 1, false, :id => "status_issues_41_employment_re" 
+    = label :item, :status_issues_41_employment_re, '41. Employment-Related Identity Theft' 
+  -# %br
+  %tr
+    = check_box_tag "status_issues_42_refund_relate", 1, false, :id => "status_issues_42_refund_relate" 
+    = label :item, :status_issues_42_refund_relate, '42. Refund-Related Identity Theft' 
+  -# %br
+  %tr
+    = check_box_tag "status_issues_43_nonfiler", 1, false, :id => "status_issues_43_nonfiler" 
+    = label :item, :status_issues_43_nonfiler, '43. Nonfiler' 
+  -# %br
+  %tr
+    = check_box_tag "status_issues_44_worker_classi", 1, false, :id => "status_issues_44_worker_classi" 
+    = label :item, :status_issues_44_worker_classi, '44. Worker Classification' 
+  -# %br
+
+%h2 Tax Issues
+
+%table
+%tbody
+  %tr
+    = check_box_tag "tax_issues_45_self_employment", 1, false, :id => "tax_issues_45_self_employment" 
+    = label :item, :tax_issues_45_self_employment, '45. Self-Employment Tax' 
+  -# %br
+  %tr
+    = check_box_tag "tax_issues_46_suspected_return", 1, false, :id => "tax_issues_46_suspected_return" 
+    = label :item, :tax_issues_46_suspected_return, '46. Suspected Return Preparer Fraud' 
+  -# %br
+  %tr
+    = check_box_tag "tax_issues_47_estimated_tax_pa", 1, false, :id => "tax_issues_47_estimated_tax_pa" 
+    = label :item, :tax_issues_47_estimated_tax_pa, '47. Estimated Tax Payments' 
+  -# %br
+  %tr
+    = check_box_tag "tax_issues_48_withholdings", 1, false, :id => "tax_issues_48_withholdings" 
+    = label :item, :tax_issues_48_withholdings, '48. Withholdings' 
+  -# %br
+  %tr
+    = check_box_tag "tax_issues_49_refund", 1, false, :id => "tax_issues_49_refund" 
+    = label :item, :tax_issues_49_refund, '49. Refund' 
+  -# %br
+  %tr
+    = check_box_tag "tax_issues_50_assessment_statu", 1, false, :id => "tax_issues_50_assessment_statu" 
+    = label :item, :tax_issues_50_assessment_statu, '50. Assessment Statute of Limitations' 
+  -# %br
+  %tr
+    = check_box_tag "tax_issues_51_collection_statu", 1, false, :id => "tax_issues_51_collection_statu" 
+    = label :item, :tax_issues_51_collection_statu, '51. Collection Statute of Limitations' 
+  -# %br
+  %tr
+    = check_box_tag "tax_issues_52_refund_statute_o", 1, false, :id => "tax_issues_52_refund_statute_o" 
+    = label :item, :tax_issues_52_refund_statute_o, '52. Refund Statute of Limitations' 
+  -# %br
+
+%h2 Penalty Issues
+
+%table
+%tbody
+  %tr
+    = check_box_tag "penalty_issues_53_trust_fund_r", 1, false, :id => "penalty_issues_53_trust_fund_r" 
+    = label :item, :penalty_issues_53_trust_fund_r, '53. Trust Fund Recovery Penalty' 
+  -# %br
+  %tr
+    = check_box_tag "penalty_issues_54_other_civil", 1, false, :id => "penalty_issues_54_other_civil" 
+    = label :item, :penalty_issues_54_other_civil, '54. Other Civil Penalties' 
+  -# %br
+  %tr
+    = check_box_tag "penalty_issues_55_additional_t", 1, false, :id => "penalty_issues_55_additional_t" 
+    = label :item, :penalty_issues_55_additional_t, '55. Additional Tax on Distributions from Qualified Retirement Plans' 
+  -# %br
+  %tr
+    = check_box_tag "penalty_issues_56_individual_s", 1, false, :id => "penalty_issues_56_individual_s" 
+    = label :item, :penalty_issues_56_individual_s, '56. Individual Shared Responsibility Payment' 
+  -# %br
+
+%h2 Collection Issues
+
+%table
+%tbody
+  %tr
+    = check_box_tag "collection_issues_57_payments", 1, false, :id => "collection_issues_57_payments" 
+    = label :item, :collection_issues_57_payments, '57. Payments' 
+  -# %br
+  %tr
+    = check_box_tag "collection_issues_58_installme", 1, false, :id => "collection_issues_58_installme" 
+    = label :item, :collection_issues_58_installme, '58. Installment Payment Agreement (IPA)' 
+  -# %br
+  %tr
+    = check_box_tag "collection_issues_59_offer_in", 1, false, :id => "collection_issues_59_offer_in" 
+    = label :item, :collection_issues_59_offer_in, '59. Offer In Compromise (OIC)' 
+  -# %br
+  %tr
+    = check_box_tag "collection_issues_60_currently", 1, false, :id => "collection_issues_60_currently" 
+    = label :item, :collection_issues_60_currently, '60. Currently Not Collectible (CNC)' 
+  -# %br
+  %tr
+    = check_box_tag "collection_issues_61_liens", 1, false, :id => "collection_issues_61_liens" 
+    = label :item, :collection_issues_61_liens, '61. Liens' 
+  -# %br
+  %tr
+    = check_box_tag "collection_issues_62_levies_in", 1, false, :id => "collection_issues_62_levies_in" 
+    = label :item, :collection_issues_62_levies_in, '62. Levies (Including Federal Payment Levy Program)' 
+  %br
+
+  = submit_tag 'Filter', :id => 'issues_refresh'
+
+#{@items_alert_message}
+
+%table
+  %thead
+    %tr
+      %th Case ID
+      %th{:class => @client_ssn_header}= link_to 'SSN', items_path(:sort_by => 'client_ssn'), :id => 'client_ssn_header'
+      %th{:class => @client_name_header}= link_to 'Client Name', items_path(:sort_by => 'client_name'), :id => 'client_name_header'
+      %th Date Opened
+      %th Date Closed
+
+  %tbody
+    - @items.each do |item|
+      %tr
+        %td= item.case_id
+        %td= item.client_ssn
+        %td= item.client_name
+        %td= item.date_opened
+        %td= item.date_closed
+        %td= link_to 'Show', item
+        %td= link_to 'Edit', edit_item_path(item)
+
+%br
+
+= link_to 'New Item', new_item_path
